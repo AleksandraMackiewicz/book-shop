@@ -118,7 +118,8 @@
                 td3.innerText = price;
             }
 
-            function refreshShoppingCart(){
+            function refreshShoppingCart()
+			{
 
              
 
@@ -127,20 +128,33 @@
                // addToShoppingCartDisplay('lele', 3, 14);
                // addToShoppingCartDisplay('hh', 3, 14);
 
-
+			console.log("Odswiezam koszyk");
+			
               let cartItems = localStorage.getItem('productsInCart' );
 
               if (cartItems != null) {
-              cartItems = JSON.parse(cartItems);
-			  for (let i = 0; i < cartItems.length; i++){
-					let ksiazka = cartItems[i];
-					let tytul = ksiazka.title;
-					let inCart = ksiazka.inCart;
-					// na probe razy 100
-					addToShoppingCartDisplay(tytul, inCart, inCart*100);
-			  } 
+					console.log("CartItems nie jest nullem");
+			
+				  cartItems = JSON.parse(cartItems);
+					console.log("CartItems dlugosc to "+cartItems.length);
+					console.log("CartItems to "+JSON.stringify(cartItems));
+				  //for (let i = 0; i < cartItems.length; i++){	  
+					//	let ksiazka = cartItems[i];
+					for (var entry in cartItems) 
+					{
+						console.log("entry to "+JSON.stringify(entry));
+						let ksiazka = cartItems[entry];
+						//let ksiazka = entry.value;
+					//	console.log("przetwrzam obiekt "+i);
+						let tytul = ksiazka.title;
+						console.log("jego tytul to "+tytul);
+						let inCart = ksiazka.inCart;
+						// na probe razy 100
+						addToShoppingCartDisplay(tytul, inCart, inCart*100);
+				  } 
 
             } else {
+					console.log("CartItems  jest nullem");
                 return;
             }
         }
