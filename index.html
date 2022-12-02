@@ -129,6 +129,8 @@
 
 
               let cartItems = localStorage.getItem('productsInCart' );
+
+              if cartItems != null {
               cartItems = JSON.parse(cartItems);
 			  for (let i = 0; i < cartItems.length; i++){
 					let ksiazka = cartItems[i];
@@ -136,7 +138,9 @@
 					let inCart = ksiazka.inCart;
 					// na probe razy 100
 					addToShoppingCartDisplay(tytul, inCart, inCart*100);
-			  }
+			  } else {
+                return;
+              }
 
             }
 
